@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="card fund__detail">
+    <!-- Fund header -->
+    <div class="card__header">
+      <p class="fund__title font-semi-bold">{{fund?.name}}</p>
+      <div class="sections">
+        <a #firstSection (click)="selectSection(fundDetailSections.GENERAL_INFO)"
+           [ngClass]="{'selected': currentSection === fundDetailSections.GENERAL_INFO}" class="sections__tab"
+           href="javascript:void(0);"><span>General Info</span></a>
+        <a (click)="selectSection(fundDetailSections.FUND_VALUE)"
+           [ngClass]="{'selected': currentSection === fundDetailSections.FUND_VALUE}" class="sections__tab"
+           href="javascript:void(0);"><span>Fund Values</span></a>
+        <a (click)="selectSection(fundDetailSections.FUND_PLAN)"
+           [ngClass]="{'selected': currentSection === fundDetailSections.FUND_PLAN}" class="sections__tab"
+           href="javascript:void(0);"><span>Fund Plan</span></a>
+      </div>
+    </div>
+    <!-- Fund body -->
+    <div *ngIf="fund" class="card__body">
+      <div *ngIf="currentSection === fundDetailSections.GENERAL_INFO" class="general data__info">
+        <div class="details">
+          <span class="tag--header text-uppercase name">Objective</span>
+          <p class="description">{{fund.investment_objective || '-'}}</p>
+        </div>
+        <div class="details">
+          <span class="tag--header text-uppercase name">Fund House</span>
+          <p class="description">{{fund.fund_house || '-'}}</p>
+        </div>
+        <div class="details">
+          <span class="tag--header text-uppercase name">Fund Manager (s)</span>
+          <p class="description">{{fund.fund_manager || '-'}}</p>
+        </div>
+        <div class="details">
+          <span class="tag--header text-uppercase name">More Info</span>
+          <p class="description">
+            <a href="{{fund.detail_info}}">Visit here</a>
+          </p>
+        </div>
+      </div>
+      <div *ngIf="currentSection === fundDetailSections.FUND_VALUE" class="fund__value data__info">
+        <div class="details">
+          <span class="tag--header text-uppercase name">Volatility</span>
+          <p *ngIf="fund.volatility" class="description">{{fund.volatility}}%</p>
+          <p *ngIf="!fund.volatility" class="description">-</p>
+        </div>
+        <div class="details">
+          <span class="tag--header text-uppercase name">Min SIP</span>
+          <p class="description">{{fund.sip_min | currency:'INR' || '-'}}</p>
+        </div>
+        <div class="details">
+          <span class="tag--header text-uppercase name">Min Lumpsum</span>
+          <p class="description">{{fund.lump_min | currency:'INR' || '-'}}</p>
+        </div>
+        <div class="details">
+          <span class="tag--header text-uppercase name">Expense Ratio</span>
+          <p *ngIf="fund.expense_ratio" class="description">{{fund.expense_ratio}}</p>
+          <p *ngIf="!fund.expense_ratio" class="description">-</p>
+        </div>
+        <div class="details">
+          <span class="tag--header text-uppercase name">Turnover</span>
+          <p *ngIf="fund.portfolio_turnover" class="description">{{fund.portfolio_turnover}}</p>
+          <p *ngIf="!fund.portfolio_turnover" class="description">-</p>
+        </div>
+      </div>
+      <div *ngIf="currentSection === fundDetailSections.FUND_PLAN" class="fund__plan data__info">
+        <div class="details">
+          <app-button-group (buttonValue)="setSelectedPlan($event)"
+                            [buttonOptions]="returnPlanOptions"></app-button-group>
+        </div>
+        <div class="details">
+          <span class="tag--header text-uppercase name">Return Value for "{{selectedReturnPlan}}"</span>
+          <p *ngIf="selectedReturnValue" class="description">{{selectedReturnValue}}%</p>
+          <p *ngIf="!selectedReturnValue" class="description"> - </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

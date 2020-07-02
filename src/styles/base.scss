@@ -1,0 +1,88 @@
+@import "variables";
+
+:host {
+  font-family: $font-regular 'sans-serif';
+  font-size: 14px;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  box-sizing: border-box;
+  color: #444;
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* Font families */
+@font-face {
+  font-family: barlow-regular;
+  src: url(~assets/fonts/barlow/Barlow-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: barlow-medium;
+  src: url(~assets/fonts/barlow/Barlow-Medium.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: barlow-semi-bold;
+  src: url(~assets/fonts/barlow/Barlow-SemiBold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: barlow-light;
+  src: url(~assets/fonts/barlow/Barlow-Light.ttf) format("truetype");
+  font-display: swap;
+}
+
+/* Font family classes */
+.font-regular {
+  font-family: $font-regular;
+}
+
+.font-medium {
+  font-family: $font-medium;
+}
+
+.font-semi-bold {
+  font-family: $font-semi-bold;
+}
+
+.font-light {
+  font-family: $font-light;
+}
+
+/* Flex layout reusable */
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.d-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}

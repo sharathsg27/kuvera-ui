@@ -1,0 +1,99 @@
+@import "../../../../styles/variables";
+
+.fund {
+  width: 340px;
+  max-width: 340px;
+
+  &:hover {
+    .fund__title {
+      color: rgba(25, 118, 210, 0.7);
+    }
+  }
+
+  .fund__header {
+    height: 98px;
+  }
+
+  .fund__body {
+    height: 85px;
+  }
+
+  .fund__title {
+    font-size: 1.2em;
+    font-weight: 400;
+    font-family: $font-medium;
+    transition: color 0.5s;
+    padding-bottom: 5px;
+  }
+
+  .fund__category {
+    font-size: 0.9em;
+    color: #707780;
+  }
+
+  .fund__type, .fund__plan {
+    font-size: 0.8em;
+  }
+
+  .fund__return__plan {
+    font-size: 1em;
+  }
+
+  .fund__info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+}
+
+.fund__actions {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px 25px;
+  box-shadow: $card-box-shadow;
+  z-index: 999;
+  background-color: #fff;
+}
+
+.fund__actions__search__wrap {
+  display: flex;
+  flex: 0.5 75%;
+  align-self: flex-end;
+}
+
+.fund__actions__sort__wrap {
+  display: flex;
+  flex: 0.5 25%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fund__list {
+  padding-top: 20px;
+  max-height: 80vh;
+  overflow-y: scroll;
+  z-index: -1;
+  position: relative;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  .fund__actions__sort__wrap {
+    flex: 0.5 50%;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .fund__actions__sort__wrap {
+    flex: 1 100%;
+    justify-content: space-between;
+  }
+}

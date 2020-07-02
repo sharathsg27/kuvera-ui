@@ -1,0 +1,8 @@
+<div class="tag--header">Sort By</div>
+<div class="select-dropdown">
+  <select (ngModelChange)="checkForValueChange();" [(ngModel)]="selectedValue" aria-label="sort feeds"
+          class="page-size__select">
+    <option disabled value="">Select</option>
+    <option *ngFor="let option of options" [value]="option.key">{{option.displayName}}</option>
+  </select>
+</div>

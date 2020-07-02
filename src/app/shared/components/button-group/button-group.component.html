@@ -1,0 +1,5 @@
+<div aria-label="group button actions" class="btn__group" role="group">
+  <button (click)="selectedButtonValue(buttonOption)" *ngFor="let buttonOption of buttonOptions"
+          [ngClass]="{'selected': buttonOption.selected}" class="btn font-semi-bold"
+          type="button">{{buttonOption.displayName}}</button>
+</div>

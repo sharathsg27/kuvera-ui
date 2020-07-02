@@ -1,0 +1,46 @@
+<div class="container">
+  <!-- Sort Mutual funds list -->
+  <div class="fund__actions d-flex">
+    <div class="fund__actions__search__wrap">
+      <app-search-box></app-search-box>
+    </div>
+    <div class="fund__actions__sort__wrap">
+      <div class="plan__actions">
+        <div class="tag--header text-uppercase">Return Plan</div>
+        <app-button-group (buttonValue)="getSelectedBtnValue($event)"
+                          [buttonOptions]="returnPlanOptions"></app-button-group>
+      </div>
+      <app-dropdown [options]="options"></app-dropdown>
+    </div>
+  </div>
+  <!-- Display mutual funds list -->
+  <div class="fund__list d-flex d-flex-wrap">
+    <a *ngFor="let fund of displayFunds" [routerLink]="['/mutual-funds/detail', fund.code]" class="card fund"
+       href="javascript:void(0);" title="{{fund.name}}">
+      <div class="card__header fund__header">
+        <p class="fund__title font-semi-bold">{{fund.name}}</p>
+        <p class="fund__category font-medium">{{fund.fund_category}}</p>
+      </div>
+
+      <div class="card__body fund__body font-regular">
+        <div class="fund__return__plan">
+          <p *ngIf="fund.returns.year_1">1Y @ <span class="fund__return__plan__value">{{fund.returns.year_1}}%</span>
+          </p>
+          <p *ngIf="fund.returns.year_3">3Y @ <span class="fund__return__plan__value">{{fund.returns.year_3}}%</span>
+          </p>
+          <p *ngIf="fund.returns.year_5">5Y @ <span class="fund__return__plan__value">{{fund.returns.year_5}}%</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="fund__info card__footer font-regular">
+        <div class="fund__type">
+          <span class="text-uppercase">{{fund.fund_type}}</span>
+        </div>
+        <div *ngIf="fund.plan" class="fund__plan">
+          <span>{{fund.plan}}</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
